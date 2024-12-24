@@ -1,0 +1,18 @@
+name: Monorepo Csr Deploy Config
+
+on:
+  workflow_dispatch:
+    inputs:
+      projectName:
+        description: '项目名称'
+        required: true
+
+jobs:
+  use_deploy_template:
+    uses: goshgame/github_workflows_fe/.github/workflows/monorepo-csr-deploy.yml@main
+    with:
+      PROJECT_NAME: ${{ github.event.inputs.projectName }}
+      S3_BUCKET: ${{ github.ref == 'refs/heads/main' && 's3://h5.gosh.com' || 's3://h5-test.gosh0.com' }}
+      DIST_PATH: dist/
+      AWS_REGION: 'ap-southeast-1'
+    secrets: inherit

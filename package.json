@@ -1,0 +1,50 @@
+{
+  "name": "@goshfe/verify",
+  "version": "0.0.1",
+  "private": true,
+  "author": "benz1997 <BenzZhang@poweronlabs.com>",
+  "scripts": {
+    "build": "umi build",
+    "dev": "umi dev",
+    "format": "prettier --cache --write .",
+    "postinstall": "umi setup",
+    "lint": "npm run lint:script && npm run lint:style",
+    "lint:script": "eslint ./ --ext .js,.jsx,.ts,.tsx --cache --fix",
+    "lint:style": "stylelint **/*.{less,css} --cache --fix",
+    "prepare": "husky",
+    "setup": "umi setup",
+    "start": "umi preview"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,css,less}": [
+      "umi lint"
+    ]
+  },
+  "dependencies": {
+    "@goshgame/fe_utils": "^0.0.12",
+    "ahooks": "^3.8.1",
+    "antd-mobile": "^5.37.1",
+    "axios": "^1.7.7",
+    "classnames": "^2.5.1",
+    "crypto-js": "4.2.0",
+    "query-string": "^9.1.1",
+    "recoil": "^0.7.7",
+    "svga.lite": "^1.6.1",
+    "umi": "^4.3.27",
+    "umi-hd": "^5.0.1",
+    "vconsole": "^3.15.1"
+  },
+  "devDependencies": {
+    "@types/postcss-flexbugs-fixes": "^5.0.3",
+    "@types/postcss-pxtorem": "^6.1.0",
+    "@types/react": "^18.0.33",
+    "@types/react-dom": "^18.0.11",
+    "@umijs/lint": "^4.3.27",
+    "@umijs/plugins": "^4.3.27",
+    "cross-env": "^7.0.3",
+    "eslint": "^8.57.1",
+    "postcss-pxtorem": "^6.1.0",
+    "stylelint": "^14.16.1",
+    "tailwindcss": "^3"
+  }
+}
