@@ -1,20 +1,24 @@
-# goshverify 仓库
+# gosh_verify_fe
 
-## 包体版本
+## package version
 
 - umi: 4.X
 - react: 18.X
 
-## 工作流程
+## workflow
 
-### 安装 workspace 依赖
+### install workspace
 
 ```
 npm i
 ```
 
-### 启动项目
+### run project
 
 ```
 npm run dev
 ```
+
+## Introduction
+
+gosh game verify pages
