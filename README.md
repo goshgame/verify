@@ -1,9 +1,10 @@
-# gosh_verify_fe
+# gosh game's verify
 
 ## package version
 
 - umi: 4.X
 - react: 18.X
+- node: 22
 
 ## workflow
 
