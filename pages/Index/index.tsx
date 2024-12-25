@@ -1,14 +1,14 @@
-import { Button, Input, Toast } from 'antd-mobile';
+import { Button, Input, Toast } from "antd-mobile";
 import {
   CalculatorOutline,
   FilterOutline,
   KeyOutline,
-} from 'antd-mobile-icons';
-import CryptoJS from 'crypto-js';
-import queryString from 'query-string';
-import { useRef, useState } from 'react';
-import S from './index.less';
-import { IQueryInfo, ITablList } from './types';
+} from "antd-mobile-icons";
+import CryptoJS from "crypto-js";
+import queryString from "query-string";
+import { useRef, useState } from "react";
+import S from "./index.less";
+import { IQueryInfo, ITablList } from "./types";
 
 const maxCount = 1000;
 const minCount = 1;
@@ -16,14 +16,23 @@ const minCount = 1;
 export default function VerifyPage() {
   const queryInfo = queryString.parse(window.location.search);
   const { gameHash, preAmount } = queryInfo as unknown as IQueryInfo;
-  const [hashContent, setHashContent] = useState(gameHash ?? '');
+  const [hashContent, setHashContent] = useState(gameHash ?? "");
   const [saltContent, setSaltContent] = useState(
-    '0000000000000000000301e2801a9a9598bfb114e574a91a887f2132f33047e6',
+    "0000000000000000000301e2801a9a9598bfb114e574a91a887f2132f33047e6"
   );
-  const [amount, setAmount] = useState(preAmount ?? '10');
+  const [amount, setAmount] = useState(preAmount ?? "10");
   const isVerifying = useRef(false);
   const [buttonLoading, setButtonLoading] = useState(false);
   const [tableList, setTableList] = useState<ITablList[]>([]);
+
+  const gameResult = (seed: string, salt: string) => {
+    let hash = String(CryptoJS.HmacSHA256(CryptoJS.enc.Hex.parse(seed), salt));
+    const hex = hash.slice(0, 8);
+    const hexNumber = parseInt(hex, 16);
+
+    return Math.floor((hexNumber * 10) / 0x100000000);
+  };
+
   const getTableList = (): Promise<ITablList[]> => {
     return new Promise((resolve, reject) => {
       try {
@@ -31,7 +40,7 @@ export default function VerifyPage() {
         const midArray = [];
         for (let i = 0; i < Number(amount); i++) {
           let hash: any = String(
-            prevHash ? CryptoJS.SHA256(String(prevHash)) : hashContent,
+            prevHash ? CryptoJS.SHA256(String(prevHash)) : hashContent
           );
           const result = gameResult(hash, saltContent);
           midArray.push({ hash, result });
@@ -51,7 +60,7 @@ export default function VerifyPage() {
         Number(amount) > maxCount
       ) {
         Toast.show(
-          `Please enter a positive integer between ${minCount}-${maxCount}`,
+          `Please enter a positive integer between ${minCount}-${maxCount}`
         );
         return;
       }
@@ -66,13 +75,6 @@ export default function VerifyPage() {
       }, 500);
       isVerifying.current = false;
     } catch (error) {}
-  };
-  const gameResult = (seed: string, salt: string) => {
-    let hash = String(CryptoJS.HmacSHA256(CryptoJS.enc.Hex.parse(seed), salt));
-    const hex = hash.slice(0, 8);
-    const hexNumber = parseInt(hex, 16);
-
-    return Math.floor((hexNumber * 10) / 0x100000000);
   };
   // const resizeCallBack = () => {
   //   // 判断宽度，超过960就是pc
