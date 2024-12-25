@@ -2,7 +2,7 @@
   "name": "@goshfe/verify",
   "version": "0.0.1",
   "private": true,
-  "author": "benz1997 <BenzZhang@poweronlabs.com>",
+  "author": "tatecai <tate@poweronlabs.ai>",
   "scripts": {
     "build": "umi build",
     "dev": "umi dev",

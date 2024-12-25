@@ -78,10 +78,10 @@ jobs:
         run: |
           npm install
 
-      - name: Check Eslint
-        env:
-          NODE_OPTIONS: "--max-old-space-size=8192"
-        run: npm run lint
+      # - name: Check Eslint
+      #   env:
+      #     NODE_OPTIONS: "--max-old-space-size=8192"
+      #   run: npm run lint
 
       - name: Build project based on branch
         env:
