@@ -1,20 +1,20 @@
-import path from 'path';
-import flexbugsFixes from 'postcss-flexbugs-fixes';
-import { defineConfig } from 'umi';
-import routes from './routes';
-import { envMap } from './utils';
+import path from "path";
+import flexbugsFixes from "postcss-flexbugs-fixes";
+import { defineConfig } from "umi";
+import routes from "./routes";
+import { envMap } from "./utils";
 
-const projectName = 'verify';
+const projectName = "verify";
 
 export default defineConfig({
-  title: 'gosh verify',
-  npmClient: 'npm',
+  title: "gosh verify",
+  npmClient: "npm",
   hash: true,
-  base: '/',
-  publicPath: envMap.isDev ? '/' : `./`,
-  outputPath: path.resolve(process.env.ROOT_DIR || '', 'dist', projectName),
-  devtool: envMap.isProd ? false : 'cheap-module-source-map',
-  history: { type: 'hash' },
+  base: "/",
+  publicPath: envMap.isDev ? "/" : `./`,
+  outputPath: path.resolve(process.env.ROOT_DIR || "", "docs"),
+  devtool: envMap.isProd ? false : "cheap-module-source-map",
+  history: { type: "hash" },
   targets: {
     ios: 10,
     android: 5,
@@ -23,7 +23,7 @@ export default defineConfig({
     buildOnly: false,
   },
   codeSplitting: {
-    jsStrategy: 'granularChunks',
+    jsStrategy: "granularChunks",
   },
   extraPostCSSPlugins: [
     flexbugsFixes(),
@@ -37,29 +37,29 @@ export default defineConfig({
     //   exclude: /node_modules/i,
     // }),
   ],
-  favicons: ['/favicon.png'],
+  favicons: ["/favicon.png"],
   mfsu: {},
   tailwindcss: {},
-  plugins: ['@umijs/plugins/dist/tailwindcss', '@umijs/plugins/dist/locale'],
+  plugins: ["@umijs/plugins/dist/tailwindcss", "@umijs/plugins/dist/locale"],
   locale: {
-    default: 'en-US',
+    default: "en-US",
     antd: false,
     baseNavigator: false,
     title: false,
   },
   routes,
   define: {
-    'process.env.PROJECT_NAME': projectName,
+    "process.env.PROJECT_NAME": projectName,
   },
   links: [
     {
-      rel: 'preconnect',
-      href: 'https://static.gosh.com',
-      crossorigin: '',
+      rel: "preconnect",
+      href: "https://static.gosh.com",
+      crossorigin: "",
     },
     {
-      rel: 'dns-prefetch',
-      href: 'https://static.gosh.com',
+      rel: "dns-prefetch",
+      href: "https://static.gosh.com",
     },
   ],
 });

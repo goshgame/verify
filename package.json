@@ -21,18 +21,14 @@
     ]
   },
   "dependencies": {
-    "@goshgame/fe_utils": "^0.0.12",
     "ahooks": "^3.8.1",
     "antd-mobile": "^5.37.1",
-    "axios": "^1.7.7",
     "classnames": "^2.5.1",
     "crypto-js": "4.2.0",
     "query-string": "^9.1.1",
     "recoil": "^0.7.7",
-    "svga.lite": "^1.6.1",
     "umi": "^4.3.27",
-    "umi-hd": "^5.0.1",
-    "vconsole": "^3.15.1"
+    "umi-hd": "^5.0.1"
   },
   "devDependencies": {
     "husky": "^9.1.6",

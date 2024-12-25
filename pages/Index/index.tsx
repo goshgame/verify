@@ -76,21 +76,6 @@ export default function VerifyPage() {
       isVerifying.current = false;
     } catch (error) {}
   };
-  // const resizeCallBack = () => {
-  //   // 判断宽度，超过960就是pc
-  //   const bodyWidth = document.body.clientWidth;
-  //   if (bodyWidth > 960) {
-  //     document.documentElement.style.fontSize = '120px';
-  //   }
-  // };
-  // useEffect(() => {
-  //   // 判断宽度，超过960就是pc
-  //   resizeCallBack();
-  //   window.addEventListener('resize', resizeCallBack);
-  //   return () => {
-  //     window.removeEventListener('resize', resizeCallBack);
-  //   };
-  // }, []);
   return (
     <div className={S.container}>
       <div className={S.containerTitle}>Crash - Game Verification Script</div>
@@ -103,7 +88,7 @@ export default function VerifyPage() {
         previous version of bc.game’s source code, exempting them from the
         requirements of the AGPL:
         <p>
-          <a href="https://gosh0.com/">https://gosh0.com/</a>
+          <a href="https://gosh0.com/">https://gosh.com/</a>
         </p>
       </div>
       <div className={S.break}></div>
@@ -114,7 +99,7 @@ export default function VerifyPage() {
         <span className={S.extraSpan}># 2561902</span>. For further details,
         please visit
         <p>
-          <a href="https://gosh0.com/">https://gosh0.com/</a>
+          <a href="https://gosh0.com/">https://gosh.com/</a>
         </p>
         We made the decision to update Crash using a salted hash as requested by
         our players in order to provide the most randomized and fair results
@@ -122,7 +107,7 @@ export default function VerifyPage() {
         <span className={S.extraSpan}># 5282960</span>. For further details,
         please visit
         <p>
-          <a href="https://gosh0.com/">https://gosh0.com/</a>
+          <a href="https://gosh0.com/">https://gosh.com/</a>
         </p>
       </div>
       <div className={S.break}></div>
