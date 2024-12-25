@@ -127,7 +127,7 @@ export default function VerifyPage() {
       </div>
       <div className={S.break}></div>
       <div className={S.row}>
-        <div className={S.title}>Game's hash</div>
+        <div className={S.title}>Game&apos;s hash</div>
         <div className={S.inputContainer}>
           <Input
             placeholder="please input hash"
@@ -183,7 +183,7 @@ export default function VerifyPage() {
       <div className={S.tableList}>
         <div className={S.tableRow}>
           <div className={`${S.tableTitle} ${S.tableTitleBold}`}>
-            Game's hash
+            Game&apos;s hash
           </div>
           <div className={`${S.tableContent}  ${S.tableTitleBold}`}>Result</div>
         </div>
