@@ -85,7 +85,7 @@ export default function VerifyPage() {
       <div className={S.break}></div>
       <div className={S.description}>
         The following sites have purchased a non-distributable copy of the
-        previous version of bc.game’s source code, exempting them from the
+        previous version of gosh game’s source code, exempting them from the
         requirements of the AGPL:
         <p>
           <a href="https://gosh0.com/">https://gosh.com/</a>
