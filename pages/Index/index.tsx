@@ -26,7 +26,7 @@ export default function VerifyPage() {
   const [tableList, setTableList] = useState<ITablList[]>([]);
 
   const gameResult = (seed: string, salt: string) => {
-    let hash = String(CryptoJS.HmacSHA256(CryptoJS.enc.Hex.parse(seed), salt));
+    let hash = String(CryptoJS.HmacSHA256(seed, salt));
     const hex = hash.slice(0, 8);
     const hexNumber = parseInt(hex, 16);
 
