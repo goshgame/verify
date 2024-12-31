@@ -4,7 +4,7 @@ export default [
   //     component: "@/layouts/index",
   //     routes: [{ path: "/wingo", component: "WingoPage" }],
   //   },
-  { path: "/parity", component: "ParityPage" },
+  { path: "/Parity", component: "ParityPage" },
   //   {
   //     path: "/",
   //     component: "Index",
