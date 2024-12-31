@@ -14,7 +14,6 @@ export default defineConfig({
   publicPath: envMap.isDev ? "/" : `./`,
   outputPath: path.resolve(process.env.ROOT_DIR || "", "docs"),
   devtool: envMap.isProd ? false : "cheap-module-source-map",
-  history: { type: "hash" },
   targets: {
     ios: 10,
     android: 5,
@@ -25,18 +24,7 @@ export default defineConfig({
   codeSplitting: {
     jsStrategy: "granularChunks",
   },
-  extraPostCSSPlugins: [
-    flexbugsFixes(),
-    // px2rem({
-    //   rootValue: 100,
-    //   propList: ['*'],
-    //   selectorBlackList: [],
-    //   replace: true,
-    //   mediaQuery: false,
-    //   minPixelValue: 0,
-    //   exclude: /node_modules/i,
-    // }),
-  ],
+  extraPostCSSPlugins: [flexbugsFixes()],
   favicons: ["/favicon.png"],
   mfsu: {},
   tailwindcss: {},
