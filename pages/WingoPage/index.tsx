@@ -4,6 +4,7 @@ import {
   FilterOutline,
   KeyOutline,
 } from "antd-mobile-icons";
+import { useLocation } from "umi";
 import CryptoJS from "crypto-js";
 import queryString from "query-string";
 import { useRef, useState } from "react";
@@ -14,7 +15,8 @@ const maxCount = 1000;
 const minCount = 1;
 
 export default function WingoPage() {
-  const queryInfo = queryString.parse(window.location.search);
+  const location = useLocation();
+  const queryInfo = queryString.parse(location.search);
   const { gameHash, preAmount } = queryInfo as unknown as IQueryInfo;
   const [hashContent, setHashContent] = useState(gameHash ?? "");
   const [saltContent, setSaltContent] = useState(
