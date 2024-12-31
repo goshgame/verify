@@ -14,7 +14,7 @@ import { IQueryInfo, ITablList } from "./types";
 const maxCount = 1000;
 const minCount = 1;
 
-export default function WingoPage() {
+export default function ParityPage() {
   const location = useLocation();
   const queryInfo = queryString.parse(location.search);
   const { gameHash, preAmount } = queryInfo as unknown as IQueryInfo;
@@ -80,9 +80,9 @@ export default function WingoPage() {
   };
   return (
     <div className={S.container}>
-      <div className={S.containerTitle}>wingo - Game Verification Script</div>
+      <div className={S.containerTitle}>Parity - Game Verification Script</div>
       <div className={S.containerSubTitle}>
-        Third party script used to verify games on wingo game.
+        Third party script used to verify games on Parity game.
       </div>
       <div className={S.break}></div>
       <div className={S.description}>
@@ -95,16 +95,16 @@ export default function WingoPage() {
       </div>
       <div className={S.break}></div>
       <div className={S.description}>
-        We made the decision to update wingo using a salted hash as requested by
-        our players in order to provide the most randomized and fair results
+        We made the decision to update Parity using a salted hash as requested
+        by our players in order to provide the most randomized and fair results
         possible after Bet
         <span className={S.extraSpan}># 2561902</span>. For further details,
         please visit
         <p>
           <a href="https://gosh.com/">https://gosh.com/</a>
         </p>
-        We made the decision to update wingo using a salted hash as requested by
-        our players in order to provide the most randomized and fair results
+        We made the decision to update Parity using a salted hash as requested
+        by our players in order to provide the most randomized and fair results
         possible after Bet
         <span className={S.extraSpan}># 5282960</span>. For further details,
         please visit
