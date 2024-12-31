@@ -14,6 +14,7 @@ export default defineConfig({
   publicPath: envMap.isDev ? "/" : `./`,
   outputPath: path.resolve(process.env.ROOT_DIR || "", "docs"),
   devtool: envMap.isProd ? false : "cheap-module-source-map",
+  history: { type: "hash" },
   targets: {
     ios: 10,
     android: 5,
