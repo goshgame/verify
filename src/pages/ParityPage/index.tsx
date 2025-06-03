@@ -4,11 +4,11 @@ import {
   FilterOutline,
   KeyOutline,
 } from "antd-mobile-icons";
-import { useLocation } from "umi";
+import { useLocation } from "react-router-dom";
 import CryptoJS from "crypto-js";
 import queryString from "query-string";
 import { useRef, useState } from "react";
-import S from "./index.less";
+import S from "./index.module.scss";
 import { IQueryInfo, ITablList } from "./types";
 
 const maxCount = 1000;
