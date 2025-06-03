@@ -4,20 +4,19 @@
   "private": true,
   "author": "tatecai <tate@poweronlabs.ai>",
   "scripts": {
-    "build": "umi build",
-    "dev": "umi dev",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
     "format": "prettier --cache --write .",
-    "postinstall": "umi setup",
     "lint": "npm run lint:script && npm run lint:style",
     "lint:script": "eslint ./ --ext .js,.jsx,.ts,.tsx --cache --fix",
     "lint:style": "stylelint **/*.{less,css} --cache --fix",
-    "prepare": "husky",
-    "setup": "umi setup",
-    "start": "umi preview"
+    "prepare": "husky"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,css,less}": [
-      "umi lint"
+      "eslint --fix",
+      "stylelint --fix"
     ]
   },
   "dependencies": {
@@ -26,22 +25,24 @@
     "classnames": "^2.5.1",
     "crypto-js": "4.2.0",
     "query-string": "^9.1.1",
-    "recoil": "^0.7.7",
-    "umi": "^4.3.27",
-    "umi-hd": "^5.0.1"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.23.0",
+    "recoil": "^0.7.7"
   },
   "devDependencies": {
-    "husky": "^9.1.6",
-    "@types/postcss-flexbugs-fixes": "^5.0.3",
+    "@types/crypto-js": "^4.2.2",
     "@types/postcss-pxtorem": "^6.1.0",
     "@types/react": "^18.0.33",
     "@types/react-dom": "^18.0.11",
-    "@umijs/lint": "^4.3.27",
-    "@umijs/plugins": "^4.3.27",
-    "cross-env": "^7.0.3",
+    "@vitejs/plugin-react": "^4.2.1",
     "eslint": "^8.57.1",
+    "husky": "^9.1.6",
     "postcss-pxtorem": "^6.1.0",
+    "sass-embedded": "^1.89.1",
     "stylelint": "^14.16.1",
-    "tailwindcss": "^3"
+    "tailwindcss": "^3.0.0",
+    "typescript": "^5.3.3",
+    "vite": "^5.2.0"
   }
 }

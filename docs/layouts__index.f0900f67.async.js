@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunk_goshfe_verify=self.webpackChunk_goshfe_verify||[]).push([[717],{12811:function(e,n,f){f.r(n),f.d(n,{default:function(){return s}});var r=f(11071),u=f(50107);function s(){return(0,u.jsx)("div",{children:(0,u.jsx)(r.j3,{})})}}}]);
