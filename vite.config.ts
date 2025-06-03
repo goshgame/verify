@@ -6,6 +6,7 @@ export default defineConfig(({ mode }) => {
   const projectName = "verify";
 
   return {
+    base: "./",
     plugins: [react()],
     build: {
       outDir: path.resolve(process.env.ROOT_DIR || "", "docs"), // outputPath
