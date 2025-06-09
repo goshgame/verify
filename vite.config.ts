@@ -39,9 +39,5 @@ export default defineConfig(({ mode }) => {
       open: true,
       port: 3000,
     },
-    // Tailwind 支持
-    // 在项目根目录要有 tailwind.config.js 和 postcss.config.js
-    // 自动读取，无需显式配置
-    // 你可以在 src/main.tsx 中引入 tailwind.css
   };
 });
