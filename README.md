@@ -2,7 +2,6 @@
 
 ## package version
 
-- umi: 4.X
 - react: 18.X
 - node: 22
 
