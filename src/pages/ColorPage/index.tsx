@@ -9,59 +9,43 @@ import CryptoJS from "crypto-js";
 import queryString from "query-string";
 import { useRef, useState } from "react";
 import S from "./index.module.scss";
-import { IDiceResult, IQueryInfo } from "./types";
-import { picList } from "./const";
+import { IQueryInfo, ITablList } from "./types";
 
 const maxCount = 1000;
 const minCount = 1;
 
-export default function DicePage() {
+export default function ColorPage() {
   const location = useLocation();
   const queryInfo = queryString.parse(location.search);
   const { gameHash, preAmount } = queryInfo as unknown as IQueryInfo;
-
   const [hashContent, setHashContent] = useState(gameHash ?? "");
   const [saltContent, setSaltContent] = useState(
     "0000000000000000000301e2801a9a9598bfb114e574a91a887f2132f33047e6"
   );
   const [amount, setAmount] = useState(preAmount ?? "10");
-
-  const [tableList, setTableList] = useState<IDiceResult[]>([]);
-  const [buttonLoading, setButtonLoading] = useState(false);
   const isVerifying = useRef(false);
+  const [buttonLoading, setButtonLoading] = useState(false);
+  const [tableList, setTableList] = useState<ITablList[]>([]);
 
-  const diceValueFromHash = (hash: string, salt: string): IDiceResult => {
-    const hmacHash = CryptoJS.HmacSHA256(hash, salt).toString(CryptoJS.enc.Hex);
+  const gameResult = (seed: string, salt: string) => {
+    let hash = String(CryptoJS.HmacSHA256(seed, salt));
+    const hex = hash.slice(0, 8);
+    const hexNumber = parseInt(hex, 16);
 
-    const hex1 = hmacHash.slice(0, 8);
-    const dice1 = (parseInt(hex1, 16) % 6) + 1;
-
-    const hex2 = hmacHash.slice(8, 16);
-    const dice2 = (parseInt(hex2, 16) % 6) + 1;
-
-    const hex3 = hmacHash.slice(16, 24);
-    const dice3 = (parseInt(hex3, 16) % 6) + 1;
-
-    return {
-      hash,
-      dice1,
-      dice2,
-      dice3,
-      total: dice1 + dice2 + dice3,
-    };
+    return Math.floor((hexNumber * 10) / 0x100000000);
   };
 
-  const getTableList = (): Promise<IDiceResult[]> => {
+  const getTableList = (): Promise<ITablList[]> => {
     return new Promise((resolve, reject) => {
       try {
-        let prevHash: string | null = null;
-        const midArray: IDiceResult[] = [];
+        let prevHash = null;
+        const midArray = [];
         for (let i = 0; i < Number(amount); i++) {
-          const hash: any = String(
-            prevHash ? CryptoJS.SHA256(prevHash) : hashContent
+          let hash: any = String(
+            prevHash ? CryptoJS.SHA256(String(prevHash)) : hashContent
           );
-          const result = diceValueFromHash(hash, saltContent);
-          midArray.push(result);
+          const result = gameResult(hash, saltContent);
+          midArray.push({ hash, result });
           prevHash = hash;
         }
         resolve(midArray);
@@ -70,7 +54,6 @@ export default function DicePage() {
       }
     });
   };
-
   const verifyList = async () => {
     try {
       if (
@@ -84,29 +67,22 @@ export default function DicePage() {
         return;
       }
       if (isVerifying.current) return;
-
       isVerifying.current = true;
       setButtonLoading(true);
       setTableList([]);
-
       const midArray = await getTableList();
       setTableList(midArray);
-
-      setTimeout(() => setButtonLoading(false), 500);
+      setTimeout(() => {
+        setButtonLoading(false);
+      }, 500);
       isVerifying.current = false;
-    } catch (error) {
-      console.error(error);
-      Toast.show("Verification failed");
-      setButtonLoading(false);
-      isVerifying.current = false;
-    }
+    } catch (error) {}
   };
-
   return (
     <div className={S.container}>
-      <div className={S.containerTitle}>Dice Game - Verification Script</div>
+      <div className={S.containerTitle}>Color - Game Verification Script</div>
       <div className={S.containerSubTitle}>
-        Third-party script used to verify fairness of Dice game results.
+        Third party script used to verify games on Color game.
       </div>
       <div className={S.break}></div>
       <div className={S.description}>
@@ -119,17 +95,17 @@ export default function DicePage() {
       </div>
       <div className={S.break}></div>
       <div className={S.description}>
-        We made the decision to update Dice Game using a salted hash as
-        requested by our players in order to provide the most randomized and
-        fair results possible after Bet
+        We made the decision to update Color using a salted hash as requested by
+        our players in order to provide the most randomized and fair results
+        possible after Bet
         <span className={S.extraSpan}># 2561902</span>. For further details,
         please visit
         <p>
           <a href="https://gosh.com/">https://gosh.com/</a>
         </p>
-        We made the decision to update Dice Game using a salted hash as
-        requested by our players in order to provide the most randomized and
-        fair results possible after Bet
+        We made the decision to update Color using a salted hash as requested by
+        our players in order to provide the most randomized and fair results
+        possible after Bet
         <span className={S.extraSpan}># 5282960</span>. For further details,
         please visit
         <p>
@@ -137,46 +113,49 @@ export default function DicePage() {
         </p>
       </div>
       <div className={S.break}></div>
-
       <div className={S.row}>
         <div className={S.title}>Game&apos;s hash</div>
         <div className={S.inputContainer}>
           <Input
             placeholder="please input hash"
             value={hashContent}
-            onChange={(val) => setHashContent(val)}
+            onChange={(val) => {
+              setHashContent(val);
+            }}
           />
           <KeyOutline className={S.inputIcon} />
         </div>
       </div>
-
       <div className={S.row}>
         <div className={S.title}>Salt</div>
         <div className={S.inputContainer}>
           <Input
-            placeholder="please input salt"
+            placeholder="please input slat"
             readOnly
             value={saltContent}
-            onChange={(val) => setSaltContent(val)}
+            onChange={(val) => {
+              setSaltContent(val);
+            }}
           />
           <FilterOutline className={S.inputIcon} />
         </div>
       </div>
-
       <div className={S.row}>
         <div className={S.title}>Amount of games</div>
+
         <div className={S.inputContainer}>
           <Input
-            placeholder="please input amount"
+            placeholder="please input amount of games"
             type="number"
             step={1}
             value={amount}
-            onChange={(val) => setAmount(val)}
+            onChange={(val) => {
+              setAmount(val);
+            }}
           />
           <CalculatorOutline className={S.inputIcon} />
         </div>
       </div>
-
       <div className={S.row}>
         <Button
           color="success"
@@ -187,41 +166,19 @@ export default function DicePage() {
           Verify
         </Button>
       </div>
-
       <div className={S.break}></div>
-
       <div className={S.tableList}>
         <div className={S.tableRow}>
           <div className={`${S.tableTitle} ${S.tableTitleBold}`}>
-            Game&apos;s Hash
+            Game&apos;s hash
           </div>
-          <div className={`${S.tableContent} ${S.tableTitleBold}`}>Results</div>
+          <div className={`${S.tableContent}  ${S.tableTitleBold}`}>Result</div>
         </div>
-
         <div className={S.tableContentContainer}>
           {tableList.map((data) => (
             <div key={data.hash} className={S.tableRow}>
               <div className={S.tableTitle}>{data.hash}</div>
-              <div className={S.tableContent}>
-                {!!data?.dice1 && (
-                  <img
-                    src={picList?.[data?.dice1] || ""}
-                    className={S.tableContentImg}
-                  />
-                )}
-                {!!data?.dice2 && (
-                  <img
-                    src={picList?.[data?.dice2] || ""}
-                    className={S.tableContentImg}
-                  />
-                )}
-                {!!data?.dice3 && (
-                  <img
-                    src={picList?.[data?.dice3] || ""}
-                    className={S.tableContentImg}
-                  />
-                )}
-              </div>
+              <div className={S.tableContent}>{data.result}</div>
             </div>
           ))}
         </div>
