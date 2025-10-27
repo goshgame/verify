@@ -10,4 +10,5 @@ export interface IDiceResult {
 export interface IQueryInfo {
   gameHash: string;
   preAmount: string;
+  app?: string;
 }

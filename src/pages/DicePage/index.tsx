@@ -18,13 +18,14 @@ const minCount = 1;
 export default function DicePage() {
   const location = useLocation();
   const queryInfo = queryString.parse(location.search);
-  const { gameHash, preAmount } = queryInfo as unknown as IQueryInfo;
+  const { gameHash, preAmount, app } = queryInfo as unknown as IQueryInfo;
 
   const [hashContent, setHashContent] = useState(gameHash ?? "");
   const [saltContent, setSaltContent] = useState(
     "0000000000000000000301e2801a9a9598bfb114e574a91a887f2132f33047e6"
   );
   const [amount, setAmount] = useState(preAmount ?? "10");
+  const [appName, setAppName] = useState(app ?? "gosh");
 
   const [tableList, setTableList] = useState<IDiceResult[]>([]);
   const [buttonLoading, setButtonLoading] = useState(false);
@@ -111,10 +112,10 @@ export default function DicePage() {
       <div className={S.break}></div>
       <div className={S.description}>
         The following sites have purchased a non-distributable copy of the
-        previous version of gosh game’s source code, exempting them from the
-        requirements of the AGPL:
+        previous version of {appName} game’s source code, exempting them from
+        the requirements of the AGPL:
         <p>
-          <a href="https://gosh.com/">https://gosh.com/</a>
+          <a href={`https://${appName}.com/`}>{`https://${appName}.com/`}</a>
         </p>
       </div>
       <div className={S.break}></div>
@@ -125,7 +126,7 @@ export default function DicePage() {
         <span className={S.extraSpan}># 2561902</span>. For further details,
         please visit
         <p>
-          <a href="https://gosh.com/">https://gosh.com/</a>
+          <a href={`https://${appName}.com/`}>{`https://${appName}.com/`}</a>
         </p>
         We made the decision to update Dice Game using a salted hash as
         requested by our players in order to provide the most randomized and
@@ -133,7 +134,7 @@ export default function DicePage() {
         <span className={S.extraSpan}># 5282960</span>. For further details,
         please visit
         <p>
-          <a href="https://gosh.com/">https://gosh.com/</a>
+          <a href={`https://${appName}.com/`}>{`https://${appName}.com/`}</a>
         </p>
       </div>
       <div className={S.break}></div>

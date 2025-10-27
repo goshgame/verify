@@ -5,4 +5,5 @@ export interface ITablList {
 export interface IQueryInfo {
   gameHash?: string;
   preAmount?: string;
+  app?: string;
 }
