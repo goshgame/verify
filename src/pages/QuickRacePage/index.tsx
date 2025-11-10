@@ -29,22 +29,17 @@ export default function QuickRacePage() {
   const [tableList, setTableList] = useState<ITablList[]>([]);
 
   const gameResult = (hash: string, salt: string) => {
-    // 计算 HMAC-SHA256
     const hmacHash = CryptoJS.HmacSHA256(hash, salt).toString(CryptoJS.enc.Hex);
 
-    // 前 8 个字符取整数
     const hex = hmacHash.slice(0, 8);
     const hexNumber = parseInt(hex, 16);
     const win = Math.floor((hexNumber * 10) / 0x100000000);
 
-    // 剩余数字
     const nums = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
     let remaining = nums.filter((n) => n !== win);
 
-    // ⚠️ 注意这里，Go 里是 []byte(hashResult)，即按字符取 ASCII 值
     const hashBytes = Array.from(hmacHash).map((c) => c.charCodeAt(0));
 
-    // 洗牌
     for (let i = remaining.length - 1; i > 0; i--) {
       const byteIndex = (8 + i) % hashBytes.length;
       const j = hashBytes[byteIndex] % (i + 1);
@@ -53,7 +48,6 @@ export default function QuickRacePage() {
 
     const finalRes = [win, ...remaining];
 
-    // 数字映射
     const mapNumToType = (num: number) => {
       switch (num) {
         case 0:
