@@ -7,6 +7,7 @@ import DicePage from "./pages/DicePage";
 import ColorPage from "./pages/ColorPage";
 import ThreeDigitPage from "./pages/3digitPage";
 import QuickRacePage from "./pages/QuickRacePage";
+import StateLotteryPage from "./pages/StateLotteryPage";
 
 export default function App() {
   return (
@@ -20,6 +21,7 @@ export default function App() {
         <Route path="/GreedyPro" element={<GreedyProPage />} />
         <Route path="/3digit" element={<ThreeDigitPage />} />
         <Route path="/QuickRace" element={<QuickRacePage />} />
+        <Route path="/StateLottery" element={<StateLotteryPage />} />
       </Routes>
     </HashRouter>
   );
