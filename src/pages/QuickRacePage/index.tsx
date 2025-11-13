@@ -9,7 +9,7 @@ import CryptoJS from "crypto-js";
 import queryString from "query-string";
 import { useRef, useState } from "react";
 import S from "./index.module.scss";
-import { IQueryInfo, ITablList, QuickRaceBetType } from "./types";
+import { IQueryInfo, ITablList, QuickRaceBetType, resultNum } from "./types";
 
 const maxCount = 1000;
 const minCount = 1;
@@ -224,7 +224,9 @@ export default function QuickRacePage() {
           {tableList.map((data) => (
             <div key={data.hash} className={S.tableRow}>
               <div className={S.tableTitle}>{data.hash}</div>
-              <div className={S.tableContent}>{data.result?.join(",")}</div>
+              <div className={S.tableContent}>
+                {data.result?.map((data) => resultNum[data])?.join(",")}
+              </div>
             </div>
           ))}
         </div>
