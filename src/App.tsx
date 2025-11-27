@@ -9,6 +9,7 @@ import ThreeDigitPage from "./pages/3digitPage";
 import QuickRacePage from "./pages/QuickRacePage";
 import StateLotteryPage from "./pages/StateLotteryPage";
 import TeenPattiPage from "./pages/TeenPattiPage";
+import CardWildPage from "./pages/CardWildPage";
 
 export default function App() {
   return (
@@ -24,6 +25,7 @@ export default function App() {
         <Route path="/QuickRace" element={<QuickRacePage />} />
         <Route path="/StateLottery" element={<StateLotteryPage />} />
         <Route path="/TeenPatti" element={<TeenPattiPage />} />
+        <Route path="/CardWild" element={<CardWildPage />} />
       </Routes>
     </HashRouter>
   );
