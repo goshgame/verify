@@ -111,7 +111,6 @@ class Hash256Rand {
   }
 }
 
-// 与Go代码完全相同的codes数组
 const codes = [
   "armcar",
   "banana",
@@ -214,7 +213,6 @@ export default function PowerPage() {
     return [X0, X1, X2, X3];
   };
 
-  // 累积概率
   const selectAward = (X0: number, probabilities: number[]): number => {
     let cumulative = 0.0;
     for (let i = 0; i < probabilities.length; i++) {
@@ -224,7 +222,6 @@ export default function PowerPage() {
     return -1;
   };
 
-  // 洗牌 —— 完全按 Go：hash = serverSeed + clientSeed + nonce
   const deterministicShuffle = (hashRaw: string, slice: string[]): string[] => {
     const encoder = new TextEncoder();
     const hashBytes = encoder.encode(hashRaw);
@@ -239,7 +236,6 @@ export default function PowerPage() {
     return slice;
   };
 
-  // GenCardPower —— 完全按 Go 版本
   const genCardPower = (
     serverSeed: string,
     clientSeed: string,
@@ -248,21 +244,16 @@ export default function PowerPage() {
   ): GenCardPowerResult => {
     const codesCopy = [...codes];
 
-    // --- 1. 洗牌种子（必须去掉冒号，与 Go 完全一致） ---
     const shuffleSeed = serverSeed + clientSeed + String(nonce);
 
-    // --- 2. 洗牌（Go: DeterministicShuffle） ---
     deterministicShuffle(shuffleSeed, codesCopy);
 
-    // --- 3. DeriveDice ---
     const [X0, X1] = deriveDice(serverSeed, clientSeed, nonce);
 
-    // --- 4. SelectAward (Go: SelectAward(X0*100, probabilities)) ---
     const awardIndex = selectAward(X0 * 100, probabilitys);
 
     let result = "";
     if (awardIndex >= 0) {
-      // --- 5. Go: index = floor(X1 * gridLen)
       const index = Math.floor(X1 * gridLen);
       result = codesCopy[index];
     }

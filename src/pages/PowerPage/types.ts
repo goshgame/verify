@@ -9,11 +9,10 @@ export interface IQueryInfo {
   app?: string;
 }
 
-export const probabilitys = [10, 20, 70];
-
-export const topGridNum = 3;
-
-export const bottomGridNum = 10;
+export const probabilitys = [
+  0.0000059085, 0.0000090849, 0.0098636164, 0.0395908492, 0.2959084923,
+  1.006361641, 3.9590849229, 11.9181698458, 39.86361641,
+];
 
 export interface GenCardPowerResult {
   number: string;
