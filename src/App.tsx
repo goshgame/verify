@@ -30,12 +30,12 @@ export default function App() {
         <Route path="/QuickRace" element={<QuickRacePage />} />
         <Route path="/StateLottery" element={<StateLotteryPage />} />
         <Route path="/TeenPatti" element={<TeenPattiPage />} />
-        <Route path="/Wild3" element={<Wild3Page />} />
-        <Route path="/Wild2" element={<Wild2Page />} />
-        <Route path="/Wild1" element={<Wild1Page />} />
-        <Route path="/HighRoller" element={<HighRollerPage />} />
-        <Route path="/Power" element={<PowerPage />} />
-        <Route path="/SAPPHIRE" element={<SAPPHIREPage />} />
+        <Route path="/scratch_wild3" element={<Wild3Page />} />
+        <Route path="/scratch_wild2" element={<Wild2Page />} />
+        <Route path="/scratch_wild1" element={<Wild1Page />} />
+        <Route path="/scratch_high_roller" element={<HighRollerPage />} />
+        <Route path="/scratch_power" element={<PowerPage />} />
+        <Route path="/scratch_sapphire" element={<SAPPHIREPage />} />
       </Routes>
     </HashRouter>
   );
