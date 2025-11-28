@@ -10,6 +10,8 @@ import QuickRacePage from "./pages/QuickRacePage";
 import StateLotteryPage from "./pages/StateLotteryPage";
 import TeenPattiPage from "./pages/TeenPattiPage";
 import Wild3Page from "./pages/Wild3Page";
+import Wild2Page from "./pages/Wild2Page";
+import Wild1Page from "./pages/Wild1Page";
 
 export default function App() {
   return (
@@ -25,7 +27,9 @@ export default function App() {
         <Route path="/QuickRace" element={<QuickRacePage />} />
         <Route path="/StateLottery" element={<StateLotteryPage />} />
         <Route path="/TeenPatti" element={<TeenPattiPage />} />
-        <Route path="/Wild3Page" element={<Wild3Page />} />
+        <Route path="/Wild3" element={<Wild3Page />} />
+        <Route path="/Wild2" element={<Wild2Page />} />
+        <Route path="/Wild1" element={<Wild1Page />} />
       </Routes>
     </HashRouter>
   );
