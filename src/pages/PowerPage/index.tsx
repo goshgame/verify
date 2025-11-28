@@ -262,7 +262,7 @@ export default function PowerPage() {
 
     return {
       number: result,
-      codes: codesCopy,
+      codes: codesCopy.slice(0, gridLen),
     };
   };
 
