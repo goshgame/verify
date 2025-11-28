@@ -14,6 +14,7 @@ import Wild2Page from "./pages/Wild2Page";
 import Wild1Page from "./pages/Wild1Page";
 import HighRollerPage from "./pages/HighRollerPage";
 import PowerPage from "./pages/PowerPage";
+import SAPPHIREPage from "./pages/SAPPHIREPage";
 
 export default function App() {
   return (
@@ -34,6 +35,7 @@ export default function App() {
         <Route path="/Wild1" element={<Wild1Page />} />
         <Route path="/HighRoller" element={<HighRollerPage />} />
         <Route path="/Power" element={<PowerPage />} />
+        <Route path="/SAPPHIRE" element={<SAPPHIREPage />} />
       </Routes>
     </HashRouter>
   );
