@@ -12,6 +12,7 @@ import TeenPattiPage from "./pages/TeenPattiPage";
 import Wild3Page from "./pages/Wild3Page";
 import Wild2Page from "./pages/Wild2Page";
 import Wild1Page from "./pages/Wild1Page";
+import HighRollerPage from "./pages/HighRollerPage";
 
 export default function App() {
   return (
@@ -30,6 +31,7 @@ export default function App() {
         <Route path="/Wild3" element={<Wild3Page />} />
         <Route path="/Wild2" element={<Wild2Page />} />
         <Route path="/Wild1" element={<Wild1Page />} />
+        <Route path="/HighRoller" element={<HighRollerPage />} />
       </Routes>
     </HashRouter>
   );
