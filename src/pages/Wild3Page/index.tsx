@@ -9,7 +9,13 @@ import CryptoJS from "crypto-js";
 import queryString from "query-string";
 import { useRef, useState } from "react";
 import S from "./index.module.scss";
-import { IQueryInfo, ITablList } from "./types";
+import {
+  IQueryInfo,
+  ITablList,
+  probabilitys,
+  topGridNum,
+  bottomGridNum,
+} from "./types";
 
 class Hash256Rand {
   private seed: Uint8Array;
@@ -106,7 +112,7 @@ class Hash256Rand {
   }
 }
 
-export default function CardWildPage() {
+export default function Wild3Page() {
   const location = useLocation();
   const queryInfo = queryString.parse(location.search);
   const { serverSeed, clientSeed, app, nonce } =
@@ -130,7 +136,14 @@ export default function CardWildPage() {
     clientSeed: string,
     nonce: number
   ): { top: number[]; bottom: number[]; number: number } => {
-    return genCardWild(serverSeed, clientSeed, nonce, [50, 30, 20], 5, 20);
+    return genCardWild(
+      serverSeed,
+      clientSeed,
+      nonce,
+      probabilitys,
+      topGridNum,
+      bottomGridNum
+    );
   };
 
   const bytesToFloat = (bytes: Uint8Array): number => {
@@ -258,11 +271,9 @@ export default function CardWildPage() {
   };
   return (
     <div className={S.container}>
-      <div className={S.containerTitle}>
-        Card Wild - Game Verification Script
-      </div>
+      <div className={S.containerTitle}>Wild3 - Game Verification Script</div>
       <div className={S.containerSubTitle}>
-        Third party script used to verify Card Wild game results.
+        Third party script used to verify Wild3 game results.
       </div>
       <div className={S.break}></div>
       <div className={S.description}>
@@ -275,17 +286,17 @@ export default function CardWildPage() {
       </div>
       <div className={S.break}></div>
       <div className={S.description}>
-        We made the decision to update Card Wild using a salted hash as
-        requested by our players in order to provide the most randomized and
-        fair results possible after Bet
+        We made the decision to update Wild3 using a salted hash as requested by
+        our players in order to provide the most randomized and fair results
+        possible after Bet
         <span className={S.extraSpan}># 2561902</span>. For further details,
         please visit
         <p>
           <a href={`https://${appName}.com/`}>{`https://${appName}.com/`}</a>
         </p>
-        We made the decision to update Card Wild using a salted hash as
-        requested by our players in order to provide the most randomized and
-        fair results possible after Bet
+        We made the decision to update Wild3 using a salted hash as requested by
+        our players in order to provide the most randomized and fair results
+        possible after Bet
         <span className={S.extraSpan}># 5282960</span>. For further details,
         please visit
         <p>
