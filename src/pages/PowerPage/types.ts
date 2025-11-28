@@ -14,6 +14,18 @@ export const probabilitys = [
   1.006361641, 3.9590849229, 11.9181698458, 39.86361641,
 ];
 
+export const probabilitysStr = [
+  "20",
+  "money",
+  "20x",
+  "5x",
+  "money",
+  "20",
+  "money",
+  "money",
+  "money",
+];
+
 export interface GenCardPowerResult {
   number: string;
   codes: string[];

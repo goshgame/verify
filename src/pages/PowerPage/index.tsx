@@ -14,6 +14,7 @@ import {
   ITablList,
   probabilitys,
   GenCardPowerResult,
+  probabilitysStr,
 } from "./types";
 
 class Hash256Rand {
@@ -255,7 +256,9 @@ export default function PowerPage() {
     let result = "";
     if (awardIndex >= 0) {
       const index = Math.floor(X1 * gridLen);
-      result = codesCopy[index];
+      // result = codesCopy[index];
+      result = probabilitysStr[awardIndex];
+      codesCopy[index] = result;
     }
 
     return {
