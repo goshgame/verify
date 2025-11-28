@@ -132,7 +132,6 @@ const codes = [
   "key",
   "lemon",
   "lightn",
-  "money",
   "moon",
   "muffin",
   "necklace",
@@ -152,7 +151,7 @@ const codes = [
   "tophat",
   "tree",
   "trophy",
-  "vault",
+  "vault"
 ];
 
 export default function PowerPage() {
