@@ -13,6 +13,60 @@ import { IQueryInfo, ITablList } from "./types";
 
 const maxCount = 1000;
 const minCount = 1;
+const cardMap: string[] = [
+  "♦2",
+  "♣2",
+  "♥2",
+  "♠2",
+  "♦3",
+  "♣3",
+  "♥3",
+  "♠3",
+  "♦4",
+  "♣4",
+  "♥4",
+  "♠4",
+  "♦5",
+  "♣5",
+  "♥5",
+  "♠5",
+  "♦6",
+  "♣6",
+  "♥6",
+  "♠6",
+  "♦7",
+  "♣7",
+  "♥7",
+  "♠7",
+  "♦8",
+  "♣8",
+  "♥8",
+  "♠8",
+  "♦9",
+  "♣9",
+  "♥9",
+  "♠9",
+  "♦10",
+  "♣10",
+  "♥10",
+  "♠10",
+  "♦J",
+  "♣J",
+  "♥J",
+  "♠J",
+  "♦Q",
+  "♣Q",
+  "♥Q",
+  "♠Q",
+  "♦K",
+  "♣K",
+  "♥K",
+  "♠K",
+  "♦A",
+  "♣A",
+  "♥A",
+  "♠A",
+];
 
 class Hash256Rand {
   private seed: Uint8Array;
@@ -128,6 +182,10 @@ function createCardSequenceFromHash(hash: string, salt: string): number[] {
   return cardSeqs.slice(0, 2);
 }
 
+function getCardLabel(cardValue: number): string {
+  return cardMap[cardValue] ?? String(cardValue);
+}
+
 export default function DragonTigerPage() {
   const location = useLocation();
   const queryInfo = queryString.parse(location.search);
@@ -145,7 +203,7 @@ export default function DragonTigerPage() {
   const [buttonLoading, setButtonLoading] = useState(false);
   const [tableList, setTableList] = useState<ITablList[]>([]);
 
-  const formatResult = (result: number[]) => `[${result.join(" ")}]`;
+  const formatResult = (result: number[]) => result.map(getCardLabel).join(" ");
 
   const getTableList = (): Promise<ITablList[]> => {
     return new Promise((resolve, reject) => {
