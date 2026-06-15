@@ -17,6 +17,7 @@ import PowerPage from "./pages/PowerPage";
 import SAPPHIREPage from "./pages/SAPPHIREPage";
 import AndarBaharPage from "./pages/AndarBaharPage";
 import DragonTigerPage from "./pages/DragonTigerPage";
+import CowboyPage from "./pages/CowboyPage";
 
 export default function App() {
   return (
@@ -40,6 +41,7 @@ export default function App() {
         <Route path="/scratch_sapphire" element={<SAPPHIREPage />} />
         <Route path="/AndarBahar" element={<AndarBaharPage />} />
         <Route path="/DragonTiger" element={<DragonTigerPage />} />
+        <Route path="/Cowboy" element={<CowboyPage />} />
       </Routes>
     </HashRouter>
   );
