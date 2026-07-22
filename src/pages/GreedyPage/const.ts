@@ -14,19 +14,19 @@ export const GreedyTotalWeight: number = 10002;
 export const picList = [
   "",
   // betType=1
-  "https://static.gosh.com/cdn-cgi/image/format=auto,width=65/sys/45-1749458604983.png",
+  "https://static.goshcdn.com/cdn-cgi/image/format=auto,width=65/sys/45-1749458604983.png",
   // betType=2
-  "https://static.gosh.com/cdn-cgi/image/format=auto,width=65/sys/45-1749458523848.png",
+  "https://static.goshcdn.com/cdn-cgi/image/format=auto,width=65/sys/45-1749458523848.png",
   // betType=3
-  "https://static.gosh.com/cdn-cgi/image/format=auto,width=65/sys/45-1749458446139.png",
+  "https://static.goshcdn.com/cdn-cgi/image/format=auto,width=65/sys/45-1749458446139.png",
   // betType=4
-  "https://static.gosh.com/cdn-cgi/image/format=auto,width=65/sys/45-1749458543394.png",
+  "https://static.goshcdn.com/cdn-cgi/image/format=auto,width=65/sys/45-1749458543394.png",
   // betType=5
-  "https://static.gosh.com/cdn-cgi/image/format=auto,width=65/sys/45-1749458631949.png",
+  "https://static.goshcdn.com/cdn-cgi/image/format=auto,width=65/sys/45-1749458631949.png",
   // betType=6
-  "https://static.gosh.com/cdn-cgi/image/format=auto,width=65/sys/45-1749458564940.png",
+  "https://static.goshcdn.com/cdn-cgi/image/format=auto,width=65/sys/45-1749458564940.png",
   // betType=7
-  "https://static.gosh.com/cdn-cgi/image/format=auto,width=65/sys/45-1749458585924.png",
+  "https://static.goshcdn.com/cdn-cgi/image/format=auto,width=65/sys/45-1749458585924.png",
   // betType=8
-  "https://static.gosh.com/cdn-cgi/image/format=auto,width=65/sys/45-1749458397070.png",
+  "https://static.goshcdn.com/cdn-cgi/image/format=auto,width=65/sys/45-1749458397070.png",
 ];
